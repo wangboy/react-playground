@@ -7,9 +7,15 @@ import './Timer.css'
 class Timer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {seconds: 0};
+    this.state = {
+      seconds: 0,
+      resetTimes: 0,
+      text: ''
+    };
 
     this.reset = this.reset.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleTextChange = this.handleTextChange.bind(this)
   }
 
   tick() {
@@ -19,7 +25,7 @@ class Timer extends React.Component {
   }
 
   reset() {
-    this.setState((preState) => ({seconds: 0}))
+    this.setState((preState) => ({seconds: 0, resetTimes: preState.resetTimes + 1}))
   }
 
   componentDidMount() {
@@ -31,10 +37,40 @@ class Timer extends React.Component {
     clearInterval(this.interval)
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log(" submit something ");
+    if (!isNaN(parseInt(this.state.text, 10))) {
+      this.setState({
+        seconds: parseInt(this.state.text, 10),
+        text: ''
+      });
+    }
+  }
+
+  handleTextChange(e) {
+    this.setState({text: e.target.value})
+  }
+
   render() {
+    let even = <p>Even</p>
+    if (this.state.seconds % 2 !== 0) {
+      even = <p>Odd</p>
+    }
     return (
       <div className="Timer">
         <p onClick={this.reset}>Seconds : {this.state.seconds}</p>
+        {even}
+        <button className="btn" type="button" onClick={this.reset}>Reset Timer</button>
+        <p>Reset Times: {this.state.resetTimes}</p>
+
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Enter a Number:
+            <input type="text" value={this.state.text} onChange={this.handleTextChange}/>
+          </label>
+          <input type="submit" value="Submit"/>
+        </form>
       </div>
     )
   }
