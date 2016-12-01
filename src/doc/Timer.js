@@ -50,6 +50,8 @@ class Timer extends React.Component {
 
   handleTextChange(e) {
     this.setState({text: e.target.value})
+    console.log(' e.target is ' + e.target) //HTMLInputElement
+    e.target.focus()
   }
 
   render() {
@@ -67,7 +69,7 @@ class Timer extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Enter a Number:
-            <input type="text" value={this.state.text} onChange={this.handleTextChange}/>
+            <input type="text" ref={it => this._text = it} value={this.state.text} onChange={this.handleTextChange}/>
           </label>
           <input type="submit" value="Submit"/>
         </form>
