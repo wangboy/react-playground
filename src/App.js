@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 // import Timer from './doc/Timer'
 import Calculator from './doc/Calculator'
+import LoginDialog from './doc/Dialog'
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         </p>
 
         {/*<Timer/>*/}
+        <LoginDialog/>
         <Calculator/>
 
       </div>
