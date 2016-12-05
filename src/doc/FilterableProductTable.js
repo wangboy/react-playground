@@ -96,7 +96,6 @@ const PRODUCTS = [
   {category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball'}
 ];
 
-
 class FilterableProductTable extends React.Component {
   constructor(props) {
     super(props)
@@ -136,5 +135,10 @@ class FilterableProductTable extends React.Component {
     )
   }
 }
+
+FilterableProductTable.propTypes = {
+  search: React.PropTypes.string.isRequired
+}
+
 
 export default FilterableProductTable
