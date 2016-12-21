@@ -5,6 +5,7 @@ import Timer from './doc/Timer'
 import Calculator from './doc/Calculator'
 import LoginDialog from './doc/Dialog'
 import FilterableProductTable from './doc/FilterableProductTable'
+import Game from './ticgame/tic'
 
 class App extends Component {
   render() {
@@ -23,6 +24,8 @@ class App extends Component {
         <Timer/>
         <LoginDialog/>
         <Calculator/>
+
+        <Game/>
 
       </div>
     );
